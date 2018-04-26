@@ -7,73 +7,72 @@ import java.util.GregorianCalendar;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * @author Epulapp
+ *
+ */
 public class TestPerson {
-	
+
 	IPerson person;
-	
-	/**
-	 * Dates de test pour les méthodes wasBorn() et getAge()
-	 */
-	GregorianCalendar dateAfter;
-	GregorianCalendar dateBefore;
-	GregorianCalendar dateBirth;
-	
-	/**
-	 * Initialisation des données de test	
-	 */
+	GregorianCalendar dateJour;
+	GregorianCalendar dateAncienne;
+	GregorianCalendar dateNaissance;
+
 	@Before
 	public void setUp() {
 		this.person = new Person("Michel", "Platine", 1996, 2, 22);
-		this.dateAfter = new GregorianCalendar();
-		this.dateBefore = new GregorianCalendar(1900, GregorianCalendar.JANUARY, 1);
-		this.dateBirth = new GregorianCalendar(1996, GregorianCalendar.FEBRUARY, 22);
+		this.dateJour = new GregorianCalendar();
+		this.dateAncienne = new GregorianCalendar(1900, GregorianCalendar.JANUARY, 1);
+		this.dateNaissance = new GregorianCalendar(1996, GregorianCalendar.FEBRUARY, 22);
 	}
-	
+
 	/**
-	 * Test de l'age en fonction d'aujourd'hui retourne vrai
+	 * Test age par rapport � la d�te de naissance
 	 */
 	@Test
-	public void testAgeToday() {
-		assertEquals(54,person.getAge(this.dateAfter));
+	public void testAgeNaissance() {
+		assertEquals(0, person.getAge(this.dateNaissance));
 	}
-	
+
 	/**
-	 * Test de l'age en fonction de la naissance
+	 * Test age par rapport � une d�te plus ancienne sens� renvoyer une
+	 * exception
+	 */
+	@Test(expected = IllegalArgumentException.class)
+	public void testAgeAncenne() {
+		assertEquals(0, person.getAge(this.dateAncienne));
+	}
+
+	/**
+	 * Test age par rapport � aujourd'hui
 	 */
 	@Test
-	public void testAgeBirth() {
-		assertEquals(0,person.getAge(this.dateBirth));
+	public void testAgeJour() {
+		assertEquals(22, person.getAge(this.dateJour));
 	}
-	
+
 	/**
-	 * Test de l'age en fonction d'une date anterieure à la naissance
-	 */
-	@Test (expected = IllegalArgumentException.class)
-	public void testAgeException() {
-		assertEquals(52,person.getAge(this.dateBefore));
-	}
-	
-	/**
-	 * Test de wasBorn() en fonction d'une date avant la naissance
+	 * Test naissance avec date naissance
 	 */
 	@Test
-	public void testBornBefore() {
-		assertFalse(person.wasBorn(this.dateBefore));
+	public void testBornNaissance() {
+		assertTrue(person.wasBorn(this.dateNaissance));
 	}
-	
+
 	/**
-	 * Test de wasBorn() en fonction d'aujourd'hui
+	 * Test naissance avec date plus ancienne
 	 */
 	@Test
-	public void testBornToday() {
-		assertTrue(person.wasBorn(this.dateAfter));
+	public void testBornAncienne() {
+		assertFalse(person.wasBorn(this.dateAncienne));
 	}
-	
+
 	/**
-	 * Test de wasBorn() en fonction de la date de la naissance
+	 * Test naissance avec date aujourd'hui
 	 */
 	@Test
-	public void testBornBirth() {
-		assertTrue(person.wasBorn(this.dateBirth));
+	public void testBornJour() {
+		assertTrue(person.wasBorn(this.dateJour));
 	}
+
 }
