@@ -5,9 +5,8 @@ import org.junit.Before;
 import people.EfficientPerson;
 
 /**
- * Classe de test de la classe EfficientPerson
- * 
- * @author GERLAND - LETOURNEUR
+ * @author Epulapp
+ *
  */
 public class TestEfficientPerson extends TestPerson {
 
@@ -15,6 +14,6 @@ public class TestEfficientPerson extends TestPerson {
 	@Override
 	public void setUp() {
 		super.setUp();
-		this.person = new EfficientPerson("Nom", "Prenom", 52);
+		this.person = new EfficientPerson("Michel", "Platine", 22);
 	}
 }

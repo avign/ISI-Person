@@ -5,9 +5,8 @@ import org.junit.Before;
 import people.SimplePerson;
 
 /**
- * Classe de test de la classe SimplePerson
- * 
- * @author GERLAND - LETOURNEUR
+ * @author Epulapp
+ *
  */
 public class TestSimplePerson extends TestPerson {
 
@@ -15,6 +14,6 @@ public class TestSimplePerson extends TestPerson {
 	@Override
 	public void setUp() {
 		super.setUp();
-		this.person = new SimplePerson("Nom", "Prenom", 1963, 12, 18);
+		this.person = new SimplePerson("Michel", "Platine", 1996, 2, 22);
 	}
 }

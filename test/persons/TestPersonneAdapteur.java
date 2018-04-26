@@ -12,6 +12,6 @@ public class TestPersonneAdapteur extends TestPerson {
 	@Override
 	public void setUp() {
 		super.setUp();
-		this.person = new PersonneAdapteur("Nom", "Prenom", 1963, 12, 18);
+		this.person = new PersonneAdapteur("Michel", "Platine", 1996, 2, 22);
 	}
 }
