@@ -13,32 +13,24 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 
 /**
- * Classe de test des listes de IPerson
- * 
- * @author GERLAND - LETOURNEUR
+ * @author Epulapp
+ *
  */
 public class TestOutilsPerson {
 
-	/**
-	 * Liste de IPerson servant au test
-	 */
-	private ArrayList<IPerson> liste;
+	private ArrayList<IPerson> list;
 	@Mock
     private IPerson person1, person2, person3, person4;
-	
-	/**
-	 * Date de test
-	 */
 	private GregorianCalendar date;
 	
 	/**
-	 * Initialisation des données de test et Mocks
+	 * setup des données de test
 	 * @throws Exception
 	 */
 	@Before
 	public void setUp() throws Exception {
 		
-		liste = new ArrayList<IPerson>();
+		list = new ArrayList<IPerson>();
 		date = new GregorianCalendar(2015, GregorianCalendar.JANUARY, 1);
 		
 		person1 = mock(IPerson.class);
@@ -51,34 +43,34 @@ public class TestOutilsPerson {
         Mockito.when(person3.getAge(Mockito.any())).thenReturn(94);
         Mockito.when(person4.getAge(Mockito.any())).thenReturn(31);
         
-        liste.add(person1);
-        liste.add(person2);
-        liste.add(person3);
-        liste.add(person4);
+        list.add(person1);
+        list.add(person2);
+        list.add(person3);
+        list.add(person4);
 	}
 
 	/**
-	 * Test du max et min incohérent
+	 * Test min et max
 	 */
 	@Test (expected = IllegalArgumentException.class)
 	public void testMaxMinException() {
-		assertEquals(2, OutilsPerson.getListBetween(liste, date, 50, 30).size());
+		assertEquals(2, OutilsPerson.getListBetween(list, date, 50, 30).size());
 	}
 	
 	/**
-	 * Test de la fonction getListBetween
+	 * Test getListBetween
 	 */
 	@Test
 	public void testListBetween() {
-		assertEquals(2, OutilsPerson.getListBetween(liste, date, 20, 40).size());
+		assertEquals(2, OutilsPerson.getListBetween(list, date, 20, 40).size());
 	}
 	
 	/**
-	 * Test de la fonction getAgePlus
+	 * Test getAgePlus
 	 */
 	@Test
 	public void testAgePlus() {
-		assertEquals(94, OutilsPerson.getPlusAge(liste, date));
+		assertEquals(94, OutilsPerson.getPlusAge(list, date));
 	}
 	
 	/**
@@ -86,7 +78,7 @@ public class TestOutilsPerson {
 	 */
 	@Test
 	public void testAnonyme() {
-		assertEquals(94, OutilsPerson.getPlusAge(liste, date));
+		assertEquals(94, OutilsPerson.getPlusAge(list, date));
 		
         Mockito.verify(person1, never()).getName();
         Mockito.verify(person1, never()).getFirstName();

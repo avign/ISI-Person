@@ -3,9 +3,8 @@ package persons;
 import org.junit.Before;
 
 /**
- * Classe de test de la classe PersonneAdapteur
- * 
- * @author GERLAND - LETOURNEUR
+ * @author Epulapp
+ *
  */
 public class TestPersonneAdapteur extends TestPerson {
 

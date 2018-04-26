@@ -4,52 +4,32 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
 /**
- * Classe de recherche dans les listes de IPerson
- * 
- * @author GERLAND - LETOURNEUR
+ * @author Epulapp
+ *
  */
 public class OutilsPerson {
 	
-	/**
-	 * Trouver le sous ensemble de IPerson qui ont un age borné 
-	 * à une date donnée dans un ensemble de IPerson
-	 * 
-	 * @param p_liste
-	 * @param p_date
-	 * @param p_ageMin
-	 * @param p_ageMax
-	 * @return r_liste ArrayList<IPerson> Liste de IPerson
-	 */
-	public static ArrayList<IPerson> getListBetween(ArrayList<IPerson> p_liste, GregorianCalendar p_date, int p_ageMin, int p_ageMax) {
-		
-		//Déclenche une exception si les bornes sont incohérentes
-		if(p_ageMin > p_ageMax)
+	public static ArrayList<IPerson> getListBetween(ArrayList<IPerson> list, GregorianCalendar date, int minAge, int maxAge) {
+		if(minAge > maxAge)
 			throw new IllegalArgumentException();
 		
 		int agePerson;
-		ArrayList<IPerson> r_liste = new ArrayList<IPerson>();
-		for(IPerson person : p_liste) {
-			agePerson = person.getAge(p_date);
-			if(agePerson >= p_ageMin && agePerson <= p_ageMax)
-				r_liste.add(person);
+		ArrayList<IPerson> list2 = new ArrayList<IPerson>();
+		for(IPerson person : list) {
+			agePerson = person.getAge(date);
+			if(agePerson >= minAge && agePerson <= maxAge)
+				list2.add(person);
 		}
 		
-		return r_liste;
+		return list2;
 	}
 	
-	/**
-	 * Trouver l'age le plus élevé à une date donnée dans une liste de IPerson
-	 * 
-	 * @param p_liste
-	 * @param p_date
-	 * @return ageMax int Age maximum
-	 */
-	public static int getPlusAge(ArrayList<IPerson> p_liste, GregorianCalendar p_date) {
+	public static int getPlusAge(ArrayList<IPerson> list, GregorianCalendar date) {
 		
 		int agePerson;
 		int ageMax = 0;
-		for(IPerson person : p_liste) {
-			agePerson = person.getAge(p_date);
+		for(IPerson person : list) {
+			agePerson = person.getAge(date);
 			if(agePerson > ageMax)
 				ageMax = agePerson;
 		}

@@ -19,7 +19,7 @@ public class TestPerson {
 	GregorianCalendar dateBirth;
 	
 	/**
-	 * Initialisation des données de test
+	 * Initialisation des données de test	
 	 */
 	@Before
 	public void setUp() {
