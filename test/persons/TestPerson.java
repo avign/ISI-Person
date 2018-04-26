@@ -39,7 +39,7 @@ public class TestPerson {
 	 * exception
 	 */
 	@Test(expected = IllegalArgumentException.class)
-	public void testAgeAncenne() {
+	public void testAgeAncienne() {
 		assertEquals(0, person.getAge(this.dateAncienne));
 	}
 
